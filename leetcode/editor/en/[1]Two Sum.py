@@ -33,9 +33,9 @@
 #  Constraints: 
 # 
 #  
-#  2 <= nums.length <= 104 
-#  -109 <= nums[i] <= 109 
-#  -109 <= target <= 109 
+#  2 <= nums.length <= 104
+#  -109 <= nums[i] <= 109
+#  -109 <= target <= 109
 #  Only one valid answer exists. 
 #  
 # 
@@ -53,5 +53,28 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        
+        # print('====== test start =======')
+        if 2 <= len(nums) <= 10000 and -10 ** 9 <= target <= 10 ** 9:
+
+            i = 0
+            ans_list = []
+            for index, number in enumerate(nums):
+                i = index + 1
+                while i < len(nums):
+                    if -10 ** 9 <= nums[i] <= 10 ** 9:
+                        result = nums[index] + nums[i]
+                        # print(f'index : {index},i:{i}, result:{result}')
+                        if result == target:
+                            ans_list.append(index)
+                            ans_list.append(i)
+                        i = i + 1
+                        # print(ans_list)
+            return ans_list
+            # print('====== test end =======')
+
+
 # leetcode submit region end(Prohibit modification and deletion)
+
+solution = Solution()
+ans = solution.twoSum([3,2,4], 6)
+print(f'ans:{ans}')
